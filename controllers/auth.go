@@ -100,14 +100,6 @@ func GetUsers(db *gorm.DB) gin.HandlerFunc {
 	}
 }
 
-func ShowLoginPage(c *gin.Context) {
-	c.HTML(http.StatusOK, "login.html", nil)
-}
-
-func ShowRegisterPage(c *gin.Context) {
-	c.HTML(http.StatusOK, "register.html", nil)
-}
-
 func ShowIndexPage(c *gin.Context) {
 	c.HTML(http.StatusOK, "index.html", gin.H{
 		"title": "Yujun Chen's Personal Website",

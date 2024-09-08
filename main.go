@@ -43,11 +43,13 @@ func main() {
 	r.POST("/api/login", controllers.Login(db))
 	r.POST("/api/register", controllers.Register(db))
 	r.GET("/users", controllers.GetUsers(db))
-	r.GET("/login", controllers.ShowLoginPage)
-	r.GET("/register", controllers.ShowRegisterPage)
 	r.GET("/", controllers.ShowIndexPage)
 	r.GET("/react", controllers.ShowReactPage)
 	r.POST("/add", controllers.AddRoute())
-
+	// 处理前端路由
+	r.NoRoute(func(c *gin.Context) {
+		// 返回前端的 index.html 文件，所有未知的路径都会渲染这个文件
+		c.File("./views/static/index.html")
+	})
 	r.Run(":8080")
 }
