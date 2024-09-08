@@ -4,9 +4,7 @@ import (
 	"log"
 	"mvc_login/react/controllers"
 	"mvc_login/react/models"
-	"time"
 
-	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 
 	//选择轻量级数据库而不是"gorm.io/driver/mysql"
@@ -30,16 +28,16 @@ func main() {
 	//  /assets/images/1.jpg 这个url文件，存储在/public/images/1.jpg
 	r.Static("/assets", "views/static")
 	//配置CORS中间件
-
-	r.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"http://localhost:5173"},
-		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE"},
-		AllowHeaders:     []string{"Origin", "Content-Type"},
-		ExposeHeaders:    []string{"Content-Length"},
-		AllowCredentials: true,
-		MaxAge:           12 * time.Hour,
-	}))
-
+	/*
+		r.Use(cors.New(cors.Config{
+			AllowOrigins:     []string{"http://localhost:5173"},
+			AllowMethods:     []string{"GET", "POST", "PUT", "DELETE"},
+			AllowHeaders:     []string{"Origin", "Content-Type"},
+			ExposeHeaders:    []string{"Content-Length"},
+			AllowCredentials: true,
+			MaxAge:           12 * time.Hour,
+		}))
+	*/
 	r.POST("/api/login", controllers.Login(db))
 	r.POST("/api/register", controllers.Register(db))
 	r.GET("/users", controllers.GetUsers(db))
