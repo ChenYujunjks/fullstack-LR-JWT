@@ -25,7 +25,6 @@ function Login() {
 
       const data = await response.json();
       if (response.ok) {
-        // 登录成功后，清空输入框，并显示成功消息
         setUsername("");
         setPassword("");
         setSuccessMessage(data.message); // 显示成功消息
@@ -38,8 +37,8 @@ function Login() {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gradient-to-r from-purple-500 to-blue-500">
-      <div className="bg-white p-8 rounded-lg shadow-lg max-w-sm w-full">
+    <div className="flex justify-center items-center h-screen bg-gradient-to-r from-purple-400 to-blue-500">
+      <div className="bg-blue-100 p-8 rounded-lg shadow-lg max-w-sm w-full">
         <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">
           登录
         </h2>
@@ -74,10 +73,9 @@ function Login() {
           </button>
           {error && <p className="mt-4 text-red-500 text-center">{error}</p>}
         </form>
-
-        {/* 成功消息显示在这里 */}
+        {/* 间隔一段背景色，成功消息显示在下方 */}
         {successMessage && (
-          <div className="mt-4 bg-white text-indigo-600 text-center p-4 rounded-lg">
+          <div className="mt-8 bg-white p-4 rounded-lg shadow-inner max-w-sm w-full text-indigo-600 text-center">
             {successMessage}
           </div>
         )}
