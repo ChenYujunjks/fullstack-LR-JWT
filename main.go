@@ -41,7 +41,7 @@ func main() {
 	}))
 
 	r.POST("/api/login", controllers.Login(db))
-	r.POST("/register", controllers.Register(db))
+	r.POST("/api/register", controllers.Register(db))
 	r.GET("/users", controllers.GetUsers(db))
 	r.GET("/login", controllers.ShowLoginPage)
 	r.GET("/register", controllers.ShowRegisterPage)

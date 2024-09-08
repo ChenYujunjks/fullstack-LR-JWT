@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Login() {
+function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -12,7 +12,7 @@ function Login() {
     setSuccessMessage(""); // 清空之前的成功消息
 
     try {
-      const response = await fetch("http://localhost:8080/api/login", {
+      const response = await fetch("http://localhost:8080/api/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -29,10 +29,10 @@ function Login() {
         setPassword("");
         setSuccessMessage(data.message); // 显示成功消息
       } else {
-        setError(data.error); // 登录失败时显示错误信息
+        setError(data.error); // 注册失败时显示错误信息
       }
     } catch {
-      setError("登录失败，请稍后再试。");
+      setError("注册失败，请稍后再试。");
     }
   };
 
@@ -40,7 +40,7 @@ function Login() {
     <div className="flex justify-center items-center h-screen bg-gradient-to-r from-purple-400 to-blue-500">
       <div className="bg-blue-100 p-8 rounded-lg shadow-lg max-w-sm w-full">
         <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">
-          登录
+          注册
         </h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -69,7 +69,7 @@ function Login() {
             type="submit"
             className="w-full bg-purple-500 text-white font-bold py-3 rounded-lg hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-blue-200 transition duration-200"
           >
-            登录
+            注册
           </button>
           {error && <p className="mt-4 text-red-500 text-center">{error}</p>}
         </form>
@@ -84,4 +84,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;
