@@ -13,7 +13,8 @@ function Register() {
     setSuccessMessage(""); // 清空之前的成功消息
 
     try {
-      const response = await fetch("http://localhost:8080/api/register", {
+      const response = await fetch("/api/register", {
+        //http://localhost:8080/api/register
         method: "POST",
         headers: {
           "Content-Type": "application/json",

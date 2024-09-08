@@ -43,7 +43,6 @@ func main() {
 	r.POST("/api/login", controllers.Login(db))
 	r.POST("/api/register", controllers.Register(db))
 	r.GET("/users", controllers.GetUsers(db))
-
 	r.GET("/", controllers.ShowIndexPage)
 	r.GET("/react", controllers.ShowReactPage)
 	r.POST("/add", controllers.AddRoute())
