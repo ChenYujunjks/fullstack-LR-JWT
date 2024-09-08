@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User List</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script>
+        function togglePasswordVisibility() {
+            const elements = document.querySelectorAll('.password');
+            elements.forEach(element => {
+                if (element.type === 'password') {
+                    element.type = 'text';
+                } else {
+                    element.type = 'password';
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>User List</h1>
+    <button onclick="togglePasswordVisibility()">Toggle Password Visibility</button>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Password</th>
+        </tr>
+        {{ range .users }}
+        <tr>
+            <td>{{ .ID }}</td>
+            <td>{{ .Username }}</td>
+            <td><input class="password" type="password" value="{{ .Password }}" readonly></td>
+        </tr>
+        {{ end }}
+    </table>
+</body>
+</html>
