@@ -4,9 +4,12 @@ function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(""); // 清空之前的错误消息
+    setSuccessMessage(""); // 清空之前的成功消息
 
     try {
       const response = await fetch("http://localhost:8080/api/login", {
@@ -22,7 +25,10 @@ function Login() {
 
       const data = await response.json();
       if (response.ok) {
-        alert(data.message); // 成功登录后的消息
+        // 登录成功后，清空输入框，并显示成功消息
+        setUsername("");
+        setPassword("");
+        setSuccessMessage(data.message); // 显示成功消息
       } else {
         setError(data.error); // 登录失败时显示错误信息
       }
@@ -68,6 +74,13 @@ function Login() {
           </button>
           {error && <p className="mt-4 text-red-500 text-center">{error}</p>}
         </form>
+
+        {/* 成功消息显示在这里 */}
+        {successMessage && (
+          <div className="mt-4 bg-white text-indigo-600 text-center p-4 rounded-lg">
+            {successMessage}
+          </div>
+        )}
       </div>
     </div>
   );
