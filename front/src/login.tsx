@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { Link } from "react-router-dom"; // 引入 Link 组件
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -73,6 +73,13 @@ function Login() {
           </button>
           {error && <p className="mt-4 text-red-500 text-center">{error}</p>}
         </form>
+        {/* 添加跳转到注册页面的链接 */}
+        <div className="mt-4 text-center">
+          <Link to="/register" className="text-blue-600 hover:underline">
+            还没有账号？去注册
+          </Link>
+        </div>
+
         {/* 间隔一段背景色，成功消息显示在下方 */}
         {successMessage && (
           <div className="mt-8 bg-white p-4 rounded-lg shadow-inner max-w-sm w-full text-indigo-600 text-center">
