@@ -1,3 +1,5 @@
+## react-route
+
 使用 React Router 打包时，无论有多少个路由，React 都会生成一个单一的 `index.html` 文件。也就是说，整个应用实际上是一个单页面应用程序（SPA, Single Page Application）。
 
 在这种情况下，**所有的路由**（例如 `/login`, `/register`）实际上都依赖于 JavaScript 在浏览器中动态处理路径切换。具体来说：
